@@ -5,7 +5,7 @@ const GEEK_TOKEN_KEY = 'geek-h5-token';
 
 // 创建 获取 token
 export const getToken = (): Token =>
-  JSON.parse(localStorage.getItem(GEEK_TOKEN_KEY) || '{}');
+  JSON.parse(localStorage.getItem(GEEK_TOKEN_KEY) || '{"token":"","refresh_token":""}');
 
 // 创建 设置 token
 export const setToken = (token: Token) =>
