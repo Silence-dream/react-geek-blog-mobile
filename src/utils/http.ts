@@ -61,4 +61,4 @@ http.interceptors.response.use(undefined, (error) => {
   return Promise.reject(error);
 });
 
-export { http };
+export default http;

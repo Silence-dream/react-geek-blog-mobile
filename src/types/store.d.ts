@@ -1,10 +1,13 @@
 // import { ThunkAction } from 'redux-thunk';
 
+import { Dispatch } from 'redux';
+import { ThunkAction } from 'redux-thunk';
+
 import store from '@/store';
 
 import { Token } from './data';
 
-export type RootState = ReturnType<typeof store.getState>;
+type RootState = ReturnType<typeof store.getState>;
 // 使用 thunk 中间件后的 Redux dispatch 类型
 // ReturnType：thunk action 的返回类型
 // State: Redux 的状态  RootState
@@ -14,9 +17,18 @@ export type RootState = ReturnType<typeof store.getState>;
 // export type RootThunkAction = ThunkAction<void, RootState, unknown, RootAction>;
 
 // 项目中所有 action 的类型
-export type RootAction = typeof store.dispatch | LoginAction;
+type RootAction = LoginAction;
 
-export type LoginAction = {
-  type: 'login/token';
-  payload: Token;
-};
+// thunk action 类型
+export type RootThunkAction = ThunkAction<void, RootState, unknown, RootAction>;
+
+type LoginAction =
+  | {
+      type: 'login/token';
+      payload: Token;
+    }
+  | {
+      type: 'login/logout';
+    };
+
+export type LoginDispatch = Dispatch<LoginAction>;

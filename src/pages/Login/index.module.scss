@@ -1,0 +1,14 @@
+@import "../../assets/styles/hairline.scss";
+.root {
+  :global {
+    .login-form {
+      padding: 0 33px;
+
+      .title {
+        margin: 54px 0 13px 0;
+      }
+
+
+    }
+  }
+}
