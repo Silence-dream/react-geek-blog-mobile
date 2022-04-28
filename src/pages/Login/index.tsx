@@ -1,9 +1,10 @@
 import { Button, Form, Input, NavBar, Toast } from 'antd-mobile';
 import { AxiosError } from 'axios';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { login } from '@/store/actions/login';
+import { getCode, login } from '@/store/actions/login';
 
 import styles from './index.module.scss';
 type LoginForm = {
@@ -34,6 +35,39 @@ const Login = () => {
       });
     }
   };
+  const [form] = Form.useForm();
+  // 定时器
+  let [codeTime, setCodeTime] = useState(0);
+  // 定时器id
+  let timer = useRef(-1);
+  // 获取验证码
+  async function onGetCode() {
+    // true 表有错 拒接点击
+    const hasError = form.getFieldError('mobile').length > 0;
+    // console.log(hasError);
+    if (hasError) return;
+    // 设置重新发送验证码的时间
+    dispatch(getCode(form.getFieldValue('mobile')) as any);
+    setCodeTime(2);
+    timer.current = window.setInterval(() => {
+      setCodeTime((codeTime) => codeTime - 1);
+    }, 1000);
+  }
+
+  // 倒计时停止清理定时器
+  useEffect(() => {
+    if (codeTime === 0) {
+      clearInterval(timer.current);
+    }
+  }, [codeTime]);
+
+  // 卸载时清理定时器
+  useEffect(() => {
+    return () => {
+      clearInterval(timer.current);
+    };
+  }, []);
+
   return (
     <div className={styles.root}>
       <NavBar></NavBar>
@@ -47,6 +81,7 @@ const Login = () => {
             mobile: '13911111111',
             code: '246810',
           }}
+          form={form}
         >
           <Form.Item
             className="login-item"
@@ -69,17 +104,40 @@ const Login = () => {
           <Form.Item
             name="code"
             className="login-item"
-            extra={<span className="code-extra">发送验证码</span>}
+            extra={
+              <span
+                className="code-extra"
+                onClick={codeTime === 0 ? onGetCode : undefined}
+                role="button"
+                onKeyDown={codeTime === 0 ? onGetCode : undefined}
+                tabIndex={0}
+              >
+                {codeTime === 0 ? `发送验证码` : `${codeTime}后重新获取`}
+              </span>
+            }
             rules={[{ required: true, message: '请输入验证码' }]}
           >
             <Input placeholder="请输入验证码" autoComplete="off" />
           </Form.Item>
 
           {/* noStyle 表示不提供 Form.Item 自带的样式 */}
-          <Form.Item noStyle>
-            <Button block type="submit" color="primary" className="login-submit">
-              登 录
-            </Button>
+          <Form.Item noStyle shouldUpdate>
+            {() => {
+              // 通过是否出现错误来控制显示开关
+              const error =
+                form.getFieldsError().filter((item) => item.errors.length > 0).length > 0;
+              return (
+                <Button
+                  block
+                  type="submit"
+                  color="primary"
+                  className="login-submit"
+                  disabled={error}
+                >
+                  登 录
+                </Button>
+              );
+            }}
           </Form.Item>
         </Form>
       </div>

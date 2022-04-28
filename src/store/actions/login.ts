@@ -24,3 +24,11 @@ export const login = (data: LoginParams) => {
     dispatch({ type: 'login/token', payload: token });
   };
 };
+
+// 发送验证码
+export const getCode = (mobile: string) => {
+  return async () => {
+    let result = await http.get(`/sms/codes/${mobile}`);
+    console.log(result);
+  };
+};
