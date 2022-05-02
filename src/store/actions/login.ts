@@ -3,7 +3,7 @@
 import { LoginResponse } from '@/types/data';
 import { LoginDispatch } from '@/types/store';
 import http from '@/utils/http';
-import { setToken } from '@/utils/token';
+import { clearToken, setToken } from '@/utils/token';
 
 type LoginParams = {
   mobile: string;
@@ -30,5 +30,15 @@ export const getCode = (mobile: string) => {
   return async () => {
     let result = await http.get(`/sms/codes/${mobile}`);
     console.log(result);
+  };
+};
+
+// 退出
+export const logout = () => {
+  return (dispatch: LoginDispatch) => {
+    // 清空本地缓存中 token
+    clearToken();
+    // 清空 redux 中存储的 token
+    dispatch({ type: 'login/logout' });
   };
 };

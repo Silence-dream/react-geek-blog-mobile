@@ -5,7 +5,7 @@ import { ThunkAction } from 'redux-thunk';
 
 import store from '@/store';
 
-import { Token } from './data';
+import { Token, User, UserProfile } from './data';
 
 type RootState = ReturnType<typeof store.getState>;
 // 使用 thunk 中间件后的 Redux dispatch 类型
@@ -17,7 +17,7 @@ type RootState = ReturnType<typeof store.getState>;
 // export type RootThunkAction = ThunkAction<void, RootState, unknown, RootAction>;
 
 // 项目中所有 action 的类型
-type RootAction = LoginAction;
+type RootAction = LoginAction | ProfileActionI;
 
 // thunk action 类型
 export type RootThunkAction = ThunkAction<void, RootState, unknown, RootAction>;
@@ -32,3 +32,21 @@ type LoginAction =
     };
 
 export type LoginDispatch = Dispatch<LoginAction>;
+
+// Profile 用户信息类型
+
+export type ProfileActionI =
+  | {
+      type: 'profile/getUser';
+      payload: User;
+    }
+  | {
+      type: 'profile/getUserProfile';
+      payload: UserProfile;
+    }
+  | { type: 'profile/photo'; payload: string }
+  | {
+      type: 'profile/update';
+      payload: Partial<UserProfile>;
+    };
+export type ProfileDispatch = Dispatch<ProfileActionI>;
