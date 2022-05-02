@@ -5,6 +5,8 @@ import { Redirect, Route, Router, Switch } from 'react-router-dom';
 import Layout from '@/pages/Layout';
 import Login from '@/pages/Login';
 import ProfileEdit from '@/pages/Profile/Edit';
+import Search from '@/pages/Search';
+import SearchResult from '@/pages/Search/Result';
 import { customHistory } from '@/utils/history';
 function App() {
   return (
@@ -17,6 +19,13 @@ function App() {
           <Route path={'/login'} component={Login}></Route>
           <Route path="/profile/edit">
             <ProfileEdit></ProfileEdit>
+          </Route>
+          {/*搜索*/}
+          <Route exact path="/search">
+            <Search />
+          </Route>
+          <Route path="/search/result">
+            <SearchResult />
           </Route>
         </Switch>
       </Router>
