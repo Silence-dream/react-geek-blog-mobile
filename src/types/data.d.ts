@@ -44,3 +44,41 @@ export type UserPhoto = {
   photo: string;
 };
 export type UserPhotoResponse = ApiResponse<UserPhoto>;
+
+// Home 数据
+export type Channel = {
+  id: number;
+  name: string;
+};
+export type UserChannel = {
+  channels: Channel[];
+};
+export type UserChannelResponse = ApiResponse<UserChannel>;
+// 文章列表数据的类型
+export type Article = {
+  art_id: string;
+  title: string;
+  aut_id: string;
+  aut_name: string;
+  // 接口返回的值 number 类型
+  comm_count: number;
+  pubdate: string;
+  cover: {
+    type: 0 | 1 | 3;
+    images: string[];
+  };
+};
+export type Articles = {
+  // 接口文档是 数值类型，但是接口真实返回的数据：string 或 null
+  // 如果还有更多文章列表数据，那么，返回 string 类型的时间戳
+  // 如果没有更多文章列表数据了，那么，就返回 null
+  pre_timestamp: string | null;
+  results: Article[];
+};
+export type ArticlesResponse = ApiResponse<Articles>;
+
+// 我的频道数据的类型
+export type ChannelList = {
+  channels: Channel[];
+};
+export type ChannelResponse = ApiResponse<ChannelList>;
