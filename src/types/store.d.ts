@@ -5,7 +5,15 @@ import { ThunkAction } from 'redux-thunk';
 
 import store from '@/store';
 
-import { Articles, Channel, Token, User, UserProfile } from './data';
+import {
+  Articles,
+  Channel,
+  Suggestion,
+  SuggestionResult,
+  Token,
+  User,
+  UserProfile,
+} from './data';
 
 type RootState = ReturnType<typeof store.getState>;
 // 使用 thunk 中间件后的 Redux dispatch 类型
@@ -73,3 +81,18 @@ type HomeAction =
         articles: Articles;
       };
     };
+
+// 搜索相关的 action 类型
+export type SearchAction =
+  | {
+      type: 'search/suggestion';
+      payload: Suggestion['options'];
+    }
+  | {
+      type: 'search/clearSuggestion';
+    }
+  | {
+      type: 'search/getSuggestionResult';
+      payload: SuggestionResult;
+    };
+export type SearchDispatch = Dispatch<SearchAction>;

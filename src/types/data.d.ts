@@ -82,3 +82,17 @@ export type ChannelList = {
   channels: Channel[];
 };
 export type ChannelResponse = ApiResponse<ChannelList>;
+
+// 搜索联想关键词
+export type Suggestion = {
+  options: string[];
+};
+export type SuggestionResponse = ApiResponse<Suggestion>;
+// 搜索结果
+export type SuggestionResult = {
+  page: number;
+  per_page: number;
+  results: Article[];
+  total_count: number;
+};
+export type SuggestionResultResponse = ApiResponse<SuggestionResult>;
