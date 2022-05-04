@@ -96,3 +96,53 @@ export type SuggestionResult = {
   total_count: number;
 };
 export type SuggestionResultResponse = ApiResponse<SuggestionResult>;
+
+// 文章详情
+export type ArticleDetail = {
+  art_id: string;
+  title: string;
+  pubdate: string;
+  aut_id: string;
+  aut_name: string;
+  aut_photo: string;
+  is_followed: boolean;
+  attitude: number;
+  content: string;
+  is_collected: boolean;
+  // 接口中缺失
+  comm_count: number;
+  like_count: number;
+  read_count: number;
+};
+export type ArticleDetailResponse = ApiResponse<ArticleDetail>;
+
+// 文章发布评论的类型
+// 评论项的类型
+export type ArtComment = {
+  com_id: string;
+  aut_id: string;
+  aut_name: string;
+  aut_photo: string;
+  like_count: number;
+  reply_count: number;
+  pubdate: string;
+  content: string;
+  is_liking: boolean;
+  is_followed: boolean;
+};
+// 文章评论的类型
+export type ArticleComment = {
+  total_count: number;
+  end_id: string | null;
+  last_id: string | null;
+  results: ArtComment[];
+};
+export type ArticleCommentResponse = ApiResponse<ArticleComment>;
+
+//
+export type AddArticleCommnet = {
+  com_id: string;
+  new_obj: ArtComment;
+  target: string;
+};
+export type AddArticleCommnetResponse = ApiResponse<AddArticleCommnet>;

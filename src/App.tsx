@@ -2,6 +2,7 @@ import './App.scss';
 
 import { Redirect, Route, Router, Switch } from 'react-router-dom';
 
+import Article from '@/pages/Article';
 import Layout from '@/pages/Layout';
 import Login from '@/pages/Login';
 import ProfileEdit from '@/pages/Profile/Edit';
@@ -27,6 +28,7 @@ function App() {
           <Route path="/search/result">
             <SearchResult />
           </Route>
+          <Route path="/articles/:id" component={Article}></Route>
         </Switch>
       </Router>
     </div>

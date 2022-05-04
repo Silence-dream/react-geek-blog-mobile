@@ -1,15 +1,24 @@
-# Vite + React + Typescript + Eslint + Prettier
+## 启动
 
-A starter for React with Typescript with the fast Vite and all static code testing with Eslint and formatting with Prettier.
+```shell
+yarn;
+yarn dev;
+```
 
-![Vite + React + Typescript + Eslint + Prettier](/resources/screenshot.png)
+## 展示
 
-I found out about Vite and I wanted to have a boilerplate for the technologies that I use. You can find more about these in the following links: [Vite](https://github.com/vitejs/vite), [React](https://reactjs.org/), [Typescript](https://www.typescriptlang.org/), [Eslint](https://eslint.org/), [Prettier](https://prettier.io/).
+![image-20220504203549398](https://cdn.jsdelivr.net/gh/Silence-dream/bed@master/img/202205042035770.png)
 
-## Installation
+![image-20220504203559659](https://cdn.jsdelivr.net/gh/Silence-dream/bed@master/img/202205042036540.png)
 
-Clone the repo and run `yarn install`
+![image-20220504203607507](D:\02 OneDrive\OneDrive\01 My Code\01 CZXY\01 My Code\04大学项目\react-极客园移动端\img\image-20220504203607507.png)
 
-## Start
+![image-20220504203616040](https://cdn.jsdelivr.net/gh/Silence-dream/bed@master/img/202205042036912.png)
 
-After the successfull installation of the packages: `yarn dev`
+![image-20220504203623847](https://cdn.jsdelivr.net/gh/Silence-dream/bed@master/img/202205042036692.png)
+
+![image-20220504203634856](https://cdn.jsdelivr.net/gh/Silence-dream/bed@master/img/202205042036931.png)
+
+![image-20220504203643376](https://cdn.jsdelivr.net/gh/Silence-dream/bed@master/img/202205042036229.png)
+
+![image-20220504203653890](https://cdn.jsdelivr.net/gh/Silence-dream/bed@master/img/202205042036596.png)

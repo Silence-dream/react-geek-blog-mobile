@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
 
+import article from '@/store/reducer/article';
+
 import home from './home';
 import login from './login';
 import profile from './profile';
@@ -10,6 +12,7 @@ const rootReducer = combineReducers({
   profile,
   home,
   search,
+  article,
 });
 
 export default rootReducer;
