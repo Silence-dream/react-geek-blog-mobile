@@ -11,8 +11,6 @@ yarn dev;
 
 ![image-20220504203559659](https://cdn.jsdelivr.net/gh/Silence-dream/bed@master/img/202205042036540.png)
 
-
-
 ![image-20220504203616040](https://cdn.jsdelivr.net/gh/Silence-dream/bed@master/img/202205042058256.png)
 
 ![image-20220504203623847](https://cdn.jsdelivr.net/gh/Silence-dream/bed@master/img/202205042036692.png)
