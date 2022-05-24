@@ -22,7 +22,6 @@ const SearchPage = () => {
     },
     {
       wait: 300,
-      maxWait: 500,
     },
   );
   // 搜索词
